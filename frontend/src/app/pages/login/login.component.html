@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <style>
+    body {
+      background-image: url('../../../assets/img/galle-fort.webp');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 500px; 
+      font-size: 1.3rem;
+      border-radius: 15px;
+      background-color: rgba(255, 255, 255, 0.5);
+      padding: 20px; 
+    }
+
+    .form-control {
+      font-size: 1.2rem;
+      border-radius: 10px;
+      margin-bottom: 15px; 
+    }
+
+    .text-center {
+      text-align: center; 
+    }
+
+    .card-title {
+      margin-bottom: 20px; 
+      font-weight: bold; 
+      color: rgb(63, 85, 143); 
+    }
+
+    .card-label {
+      font-size: 1.1rem;
+      margin-bottom: 2px; 
+      font-weight: bold; 
+      color: #282828; 
+    }
+
+    .register-link {
+      font-size: 1rem; 
+      color:#282828;
+      font-weight: bold;
+      text-decoration: none; 
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h5 class="card-title text-center">Login</h5>
+    <div *ngIf="errorMessage" style="display: flex;">
+
+      <div  class="error-message" style="color: white; font-size: 15px; background-color: red; width: 100%;">
+        {{ errorMessage }}
+      </div>
+      <button (click) = "closeErrorMessage()" style="font-size: 15px; color: white; background-color: darkred; border: none; outline: none; cursor: pointer;">X</button>
+    </div>
+    
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="card-label form-label">Email</label>
+        <input type="email" class="form-control" id="userName" 
+        name="userName" placeholder="Enter email"
+               [(ngModel)]="userAccount.userName">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="card-label form-label">Password</label>
+        <input type="password" class="form-control" id="password" 
+        name="password" placeholder="Password"
+               [(ngModel)]="userAccount.password">
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </div>
+    </form>
+    <div class="text-center">
+      <a (click) = "register()" class="register-link">Register</a> <!-- Link to the register page -->
+    </div>
+  </div>
+</body>
+</html>

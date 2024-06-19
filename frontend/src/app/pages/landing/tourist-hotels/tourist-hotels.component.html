@@ -1,0 +1,89 @@
+<div class="wrapper">
+
+
+    <div class="section section-hotels">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="title">Hotels</h2>
+                
+            </div>
+
+            <!-- <div class="search-form">
+                <form (ngSubmit)="searchRooms()">
+                  <div class="form-group">
+                    <label for="checkInDate">Check-in Date:</label>
+                    <input type="date" id="checkInDate" name="checkInDate" [(ngModel)]="checkInDate" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="checkOutDate">Check-out Date:</label>
+                    <input type="date" id="checkOutDate" name="checkOutDate" [(ngModel)]="checkOutDate" required>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit">Search</button>
+                  </div>
+                </form>
+              </div> -->
+
+            <div class="row" >
+               <div class="col-md-4 mb-5" *ngFor = "let hotel of hotels">
+                    <div class="">
+                        <div class="card-header img-fluid img-raised" style="background-image: url('assets/img/bg3.jpg');"></div>
+                        <h4 class="title mb-0">{{ hotel.name }}</h4>
+                        <div class="star-rating">
+                            <span class="star" *ngFor="let star of [1, 2, 3, 4, 5]" [ngClass]="{'highlighted': star <= hotel.averageRating}">&#9733;</span>
+                        </div>
+                        <a class="h5" (click) = "hotelPackages(hotel.id)">Packages</a> 
+                        <p class="category text-primary"></p>
+                        <button *ngIf="userRole === 'ROLE_TOURIST'" (click)="openPopup(hotel.id, 'hotel')" class="btn" style="background-color: goldenrod;">Rate</button>
+                            <p class="category text-primary"></p>
+                        <!-- <p class="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                            <a href="#">links</a> for people to be able to follow them outside the site.</p> -->
+                            <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-twitter"></i></a>
+                            <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-instagram"></i></a>
+                            <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-facebook-square"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <feedback-form-cmp *ngIf="showPopup" [id]="idToSend" [ty]="rateType" (closeModal)="showPopup = false"></feedback-form-cmp>
+    <footer class="footer footer-default">
+        <!-- <div class="container">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="https://www.creative-tim.com">
+                            Creative Tim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.creative-tim.com/about-us">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://blog.creative-tim.com">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md">
+                            MIT License
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright">
+                &copy;
+                {{data | date: 'yyyy'}}, Designed by
+                <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
+                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </div>
+        </div> -->
+    </footer>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

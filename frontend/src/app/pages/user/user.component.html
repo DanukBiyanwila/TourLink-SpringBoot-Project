@@ -1,0 +1,204 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="card card-user">
+      <div class="image">
+        <img src="assets/img/damir-bosnjak.jpg" alt="...">
+      </div>
+      <div class="card-body">
+        <div class="author">
+          <a href="user">
+            <img class="avatar border-gray" src="assets/img/mike.jpg" alt="...">
+            <h5 class="title">{{user.firstName}} {{ user.lastName }}</h5>
+          </a>
+          <p class="description">
+            @{{user.firstName}}
+          </p>
+        </div>
+        <p class="description text-center">
+          "I like the way you work it
+          <br> No diggity
+          <br> I wanna bag it up"
+        </p>
+      </div>
+      <!-- <div class="card-footer">
+        <hr>
+        <div class="button-container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-6 ml-auto">
+              <h5>12
+                <br>
+                <small>Files</small>
+              </h5>
+            </div>
+            <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
+              <h5>2GB
+                <br>
+                <small>Used</small>
+              </h5>
+            </div>
+            <div class="col-lg-3 mr-auto">
+              <h5>24,6$
+                <br>
+                <small>Spent</small>
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <!-- <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Team Members</h4>
+      </div>
+      <div class="card-body">
+        <ul class="list-unstyled team-members">
+          <li>
+            <div class="row">
+              <div class="col-md-2 col-2">
+                <div class="avatar">
+                  <img src="assets/img/faces/ayo-ogunseinde-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                </div>
+              </div>
+              <div class="col-md-7 col-7">
+                DJ Khaled
+                <br />
+                <span class="text-muted">
+                  <small>Offline</small>
+                </span>
+              </div>
+              <div class="col-md-3 col-3 text-right">
+                <button class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="row">
+              <div class="col-md-2 col-2">
+                <div class="avatar">
+                  <img src="assets/img/faces/joe-gardner-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                </div>
+              </div>
+              <div class="col-md-7 col-7">
+                Creative Tim
+                <br />
+                <span class="text-success">
+                  <small>Available</small>
+                </span>
+              </div>
+              <div class="col-md-3 col-3 text-right">
+                <button class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="row">
+              <div class="col-md-2 col-2">
+                <div class="avatar">
+                  <img src="assets/img/faces/clem-onojeghuo-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                </div>
+              </div>
+              <div class="col-ms-7 col-7">
+                Flume
+                <br />
+                <span class="text-danger">
+                  <small>Busy</small>
+                </span>
+              </div>
+              <div class="col-md-3 col-3 text-right">
+                <button class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div> -->
+  </div>
+  <div class="col-md-8">
+    <div class="card card-user">
+      <div class="card-header">
+        <h5 class="card-title">Edit Profile</h5>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit) = "onSubmit()">
+          <div class="row">
+            <!-- <div class="col-md-5 pr-1">
+              <div class="form-group">
+                <label>Company (disabled)</label>
+                <input type="text" class="form-control"  disabled="" placeholder="Company" value="">
+              </div>
+            </div> -->
+            <div class="col-md-6 pr-1">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input [(ngModel)] = "user.firstName" type="text" class="form-control" id="fullName" name="fullName" placeholder="Full Name" value="">
+              </div>
+            </div>
+            <div class="col-md-6 pl-1">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input [(ngModel)] = "user.email" type="email" id="email" name="email" class="form-control" placeholder="Email">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-1">
+              <div class="form-group">
+                <label>First Name</label>
+                <input [(ngModel)] = "user.firstName" type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" value="Chet">
+              </div>
+            </div>
+            <div class="col-md-6 pl-1">
+              <div class="form-group">
+                <label>Last Name</label>
+                <input  [(ngModel)] = "user.lastName" type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" value="Faker">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Address</label>
+                <input [(ngModel)] = "user.address"  type="text" class="form-control" id="address" name="address" placeholder="Home Address" value="">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 pr-1">
+              <div class="form-group">
+                <label>Age</label>
+                <input [(ngModel)] = "user.age" type="number" class="form-control" id="age" name="age" placeholder="Age">
+              </div>
+            </div>
+            <div class="col-md-4  px-1">
+              <div class="form-group">
+                <label>Phone</label>
+                <input [(ngModel)] = "user.phone"  type="text" id="phone" name="phone" class="form-control" placeholder="Phone" value="">
+              </div>
+            </div>
+            <div class="col-md-4  pl-1">
+              <div class="form-group">
+                <label>Country</label>
+                <input [(ngModel)] = "user.country" type="text" class="form-control" id="country" name="country" placeholder="Country" value="Australia">
+              </div>
+            </div>
+
+          </div>
+          <!-- <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>About Me</label>
+                <textarea class="form-control textarea">Oh so, your weak rhyme You doubt I'll bother, reading into it</textarea>
+              </div>
+            </div>
+          </div> -->
+          <div class="row">
+            <div class="update ml-auto mr-auto">
+              <button type="submit" class="btn btn-primary btn-round">Update Profile</button>
+              <button (click) = "openDialog(user.id)" type="submit" class="btn btn-round" style="background-color: red;">Delete Profile</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

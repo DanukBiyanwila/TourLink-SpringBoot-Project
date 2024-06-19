@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h4 class="card-title"> Other Facilities</h4>
+          <div>
+
+            <button (click) = "createOtherFacilities()"  class="btn btn-warning">Add</button>
+            <button (click)="downloadExcel()" class="btn"  style="background-color: rgb(162, 6, 6);">Download XLSX</button>
+          </div>
+        </div>
+        <div class="form-outline mb-2 col-md-6" data-mdb-input-init>
+          <input type="search" id="form1" [(ngModel)]="searchQuery" (ngModelChange)="applyFilter()"  class="form-control" placeholder="Search" aria-label="Search"/>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead class="">
+                <th>
+                 Service Type
+                </th>
+                <th>
+                 Price
+                </th>
+                <th>
+                  Service Loacation
+                </th>
+                <th class="text-right">
+                  Actions
+                </th>
+              </thead>
+              <tbody>
+                <tr *ngFor = "let facilities of filteredOtherFacilities">
+
+                  <td>
+                    {{ facilities.serviceType }}
+                  </td>
+                  <td>
+                    {{ facilities.price }}
+                  </td>
+                  <td>
+                    {{ facilities.serviceLocation }}
+                  </td>
+
+                  <td class="text-right">
+                    <button (click) = "detailsOtherFacilities(facilities.id)" class="btn btn-info mr-2">Details</button>
+                    <button (click) = "updateOtherFacilities(facilities.id)" class="btn btn-warning mr-2">Update</button>
+                    <button (click) = "openDialog(facilities.id)" style="background-color: red;" class="btn">delete</button>  
+                </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

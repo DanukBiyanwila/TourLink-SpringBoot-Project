@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Tourists</h4>
+          <!-- <button (click) = "hotelCreate()" class="btn btn-warning">Add</button> -->
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead class="">
+                <th>
+                  Name
+                </th>
+                <th>
+                  Email
+                </th>
+                <th>
+                  City
+                </th>
+                <th class="text-right">
+                  Actions
+                </th>
+              </thead>
+              <tbody>
+                <tr *ngFor = " let user of users">
+
+                  <td>
+                    {{ user.firstName }}
+                  </td>
+                  <td>
+                    {{ user.email }}
+                  </td>
+                  <td>
+                    {{ user.country }}
+                  </td>
+                  <td class="text-right">
+                    <button (click) = "touristPackageDetails(user.id)" class="btn btn-info mr-2">Details</button>
+                  </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

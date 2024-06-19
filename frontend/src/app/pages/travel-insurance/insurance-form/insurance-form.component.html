@@ -1,0 +1,126 @@
+<style>
+  .has-error .form-control {
+  border-color: rgb(176, 8, 8);
+}
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-user">
+          <div class="card-header">
+            <h5 class="card-title">Add Travel Insurance</h5>
+          </div>
+          <div class="card-body">
+            <div class="col-md-8 offset-md-2">
+            <form (ngSubmit) = "onSubmit()" #travelInsuranceForm="ngForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group" [class.has-error]="name.invalid && (name.dirty || name.touched)">
+                  <label>Name <span class="text-danger">*</span></label> 
+                    <input type="text" class="form-control" id="name" name="name" 
+                    [(ngModel)] = "travelInsurance.name" required #name="ngModel">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div class="form-group" [class.has-error]="price.invalid && (price.dirty || price.touched)">
+                    <label for="exampleInputEmail1">Price <span class="text-danger">*</span></label> 
+                    <input type="text" class="form-control"  id="price" name="price" 
+                    [(ngModel)] = "travelInsurance.price" required #price="ngModel">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 pr-1">
+                  <div class="form-group" [class.has-error]="coverageType.invalid && (coverageType.dirty || coverageType.touched)">
+                    <label>Coverage Type <span class="text-danger">*</span></label> 
+                    <input type="text" class="form-control"  id="coverageType" name="coverageType" 
+                    [(ngModel)] = "travelInsurance.coverageType" required #coverageType="ngModel">
+                  </div>
+                </div>
+                <div class="col-md-4 px-1">
+                  <div class="form-group" [class.has-error]="coverageLimit.invalid && (coverageLimit.dirty || coverageLimit.touched)">
+                    <label>Coverage Limit <span class="text-danger">*</span></label> 
+                    <input type="text" class="form-control" id="coverageLimit" name="coverageLimit" 
+                    [(ngModel)] = "travelInsurance.coverageLimit"  required #coverageLimit="ngModel">
+                  </div>
+                </div>
+                <div class="col-md-4 px-1">
+                  <div class="form-group" [class.has-error]="coveragePeriod.invalid && (coveragePeriod.dirty || coveragePeriod.touched)">
+                    <label>Coverage Period <span class="text-danger">*</span></label> 
+                    <input type="text" class="form-control" id="coveragePeriod" name="coveragePeriod" 
+                    [(ngModel)] = "travelInsurance.coveragePeriod" required #coveragePeriod="ngModel">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div class="form-group">
+                    <label>Deductible</label>
+                    <input type="text" class="form-control"  id="deductible" name="deductible" 
+                    [(ngModel)] = "travelInsurance.deductible">
+                  </div>
+                </div>
+                <div class="col-md-6 px-1">
+                  <div class="form-group">
+                    <label>Age Limit</label>
+                    <input type="text" class="form-control" id="ageLimit" name="ageLimit" 
+                    [(ngModel)] = "travelInsurance.ageLimit">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Sport Coverage</label>
+                    <input type="text" class="form-control"  id="sportCoverage" name="sportCoverage" 
+                    [(ngModel)] = "travelInsurance.sportCoverage">
+                  </div>
+                </div>
+                <div class="col-md-4 px-1">
+                  <div class="form-group">
+                    <label>Pre Existing Condition Coverage</label>
+                    <input type="text" class="form-control" id="preExistingConditionCoverage" name="preExistingConditionCoverage" 
+                    [(ngModel)] = "travelInsurance.preExistingConditionCoverage">
+                  </div>
+                </div>
+                <div class="col-md-4 px-1">
+                  <div class="form-group">
+                    <label>Region Coverage</label>
+                    <input type="text" class="form-control" id="regionCoverage" name="regionCoverage" 
+                    [(ngModel)] = "travelInsurance.regionCoverage">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Additional Info</label>
+                    <textarea class="form-control textarea" id="additionalInfo" name="additionalInfo" 
+                    [(ngModel)] = "travelInsurance.additionalInfo"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Restriction</label>
+                    <textarea class="form-control textarea" id="restriction" name="restriction" 
+                    [(ngModel)] = "travelInsurance.restriction"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control textarea" id="description" name="description" 
+                    [(ngModel)] = "travelInsurance.description"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="update ml-auto mr-auto">
+                  <button type="submit" class="btn btn-primary btn-round" [disabled]="!travelInsuranceForm.form.valid">save</button>
+                </div>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

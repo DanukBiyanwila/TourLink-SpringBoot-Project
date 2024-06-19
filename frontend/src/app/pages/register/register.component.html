@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <style>
+    body {
+      background-image: url('../../../assets/img/15.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 500px; 
+      font-size: 1.3rem;
+      border-radius: 15px;
+      background-color: rgba(255, 255, 255, 0.5);
+      padding: 20px; 
+    }
+
+    .form-control {
+      font-size: 1.2rem;
+      border-radius: 10px;
+      margin-bottom: 15px; 
+    }
+
+    .text-center {
+      text-align: center; 
+    }
+
+    .card-title {
+      margin-bottom: 20px; 
+      font-weight: bold; 
+      color: rgb(0, 0, 0); 
+    }
+
+    .card-label {
+      font-size: 1.1rem;
+      margin-bottom: 2px; 
+      font-weight: bold; 
+      color: #282828; 
+    }
+
+    .register-link {
+      font-size: 1rem; 
+      color:#282828;
+      font-weight: bold;
+      text-decoration: none; 
+    }
+    .custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 8px 20px; /* Adjust padding as needed */
+    border-radius: 20px; /* Adjust border-radius to make it rounded */
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.custom-select::after {
+    content: '\25BC'; /* Unicode for down arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.custom-select:focus {
+    outline: none;
+    border-color: #007bff; /* Custom focus color */
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h5 class="card-title text-center">Register</h5>
+    <form (ngSubmit)="onSubmit()">
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="card-label form-label">First Name</label>
+        <input type="email" class="form-control" id="firstName" 
+        name="userName" placeholder="Enter firstName"
+               [(ngModel)]="user.firstName">
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="card-label form-label">Last Name</label>
+        <input type="email" class="form-control" id="lastName" 
+        name="userName" placeholder="Enter lastName"
+               [(ngModel)]="user.lastName">
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="card-label form-label">Email</label>
+        <input type="email" class="form-control" id="email" 
+        name="userName" placeholder="Enter email"
+               [(ngModel)]="user.email">
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="card-label form-label">Phone</label>
+        <input type="email" class="form-control" id="phone" 
+        name="userName" placeholder="Enter phone"
+               [(ngModel)]="user.phone">
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="card-label form-label">Age</label>
+        <input type="email" class="form-control" id="age" 
+        name="userName" placeholder="Enter age"
+               [(ngModel)]="user.age">
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="card-label form-label">Country</label>
+        <input type="email" class="form-control" id="country" 
+        name="userName" placeholder="Enter country"
+               [(ngModel)]="user.country">
+      </div>
+
+     
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="card-label form-label">Password</label>
+        <input type="password" class="form-control" id="password" 
+        name="password" placeholder="Password"
+               [(ngModel)]="user.password">
+      </div>
+
+      
+
+      <div class="mb-3">
+        <label for="roleSelect" class="card-label form-label">Who Am I ?</label>
+        <div class="custom-select-wrapper">
+            <select class="form-select custom-select" id="roleSelect" name="role" [(ngModel)]="user.roleId">
+                <option value="3">Tourist</option>
+                <option value="4">Guide</option>
+                <option value="2">Driver</option>
+            </select>
+        </div>
+    </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+      </div>
+    </form>
+    <div class="text-center">
+      <a (click) = "navigateTo()" class="register-link">Login</a> <!-- Link to the register page -->
+    </div>
+  </div>
+</body>
+</html>

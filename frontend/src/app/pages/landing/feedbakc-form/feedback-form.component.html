@@ -1,0 +1,65 @@
+<style>
+  .popup-form-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.popup-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-form input {
+  margin-bottom: 10px;
+}
+
+.popup-form button {
+  margin-top: 10px;
+}
+
+</style>
+
+<div class="popup-form-container" (click)="closePopup()">
+    <div class="popup-form col-md-3" (click)="stopPropagation($event)">
+      <h2>Rate your experiance</h2>
+      <p>Thank you for your valuable feedback! We truly appreciate it and will use it to improve our services.</p>
+      <form (ngSubmit) = "submitForm()">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Rate</label>
+              <input type="number" class="form-control" id="rating" name="rating" min="0" max="5" 
+              [(ngModel)] = "rating.rating">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <textarea class="form-control textarea" placeholder="Tell us about your experiance!" id="comment" name="comment" 
+              [(ngModel)] = "rating.comment"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="update ml-auto mr-auto">
+            <button type="submit" class="btn btn-primary btn-round" >save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  

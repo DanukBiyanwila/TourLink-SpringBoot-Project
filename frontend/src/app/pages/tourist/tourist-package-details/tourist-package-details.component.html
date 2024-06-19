@@ -1,0 +1,27 @@
+<div class="row" >
+    <div class="col-md-12">
+      <div class="card" style="height: 90px;">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h4 class="card-title"> Guide Packages </h4>
+          <!-- <button (click) = "hotelPackageCreate(id)" class="btn btn-warning">Add</button> -->
+        </div>
+  </div>
+  </div>
+  </div>
+  
+
+<div class="row" >
+    <div class="col-md-3" *ngFor = "let package of packages">
+      <div class="card guide-package">
+        <div class="card-header">
+          <h4 class="card-title"> {{ package.name }} </h4>
+        </div>
+        <div class="card-body">
+          <div >
+            <p class="h5">{{ package.description }} </p>
+            <p class="h5">Rs. {{ package.price }} /=</p>
+        </div>
+    </div>
+</div>
+</div>
+</div>

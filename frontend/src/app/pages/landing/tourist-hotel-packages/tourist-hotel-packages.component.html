@@ -1,0 +1,69 @@
+<div class="wrapper">
+
+
+    <div class="section section-hotels">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="title">Packages</h2>
+                
+            </div>
+
+            <div class="form-outline mb-2 col-md-6" data-mdb-input-init>
+                <input type="search" id="form1" [(ngModel)]="searchQuery" (ngModelChange)="applyFilter()"  class="form-control" placeholder="Search" aria-label="Search"/>
+              </div>
+
+            <div class="row" >
+               <div class="col-md-4 mb-5" *ngFor = "let package of filteredHotelPackages">
+                    <div class="">
+                        <div class="card-header img-fluid img-raised" style="background-image: url('assets/img/bg3.jpg');"></div>
+                        <h4 class="title">{{ package.name }}</h4>
+                        <p style="height: 50px;" class="description">{{ package.description }} </p>
+                        <p class="h5">Rs. {{ package.price }} /=</p>
+                        <button *ngIf="userRole === 'ROLE_TOURIST'" (click)="addToCart(package.id)" style="background-color: red;" class="btn">add to cart</button>
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <footer class="footer footer-default">
+        <!-- <div class="container">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="https://www.creative-tim.com">
+                            Creative Tim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.creative-tim.com/about-us">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://blog.creative-tim.com">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md">
+                            MIT License
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright">
+                &copy;
+                {{data | date: 'yyyy'}}, Designed by
+                <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
+                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </div>
+        </div> -->
+    </footer>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 60px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 1 auto;
+      display: flex;
+      justify-content: space-between; 
+      align-items: flex-start; 
+    }
+    .cart-section {
+      background-color: #fff;
+      width: 200%;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      padding: 20px;
+      flex: 2; 
+    }
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .cart-table th, .cart-table td {
+      border-bottom: 1px solid #c6c6c6;
+      padding: 10px;
+      text-align: left;
+    }
+    .cart-table th {
+      background-color: #d6cfcf;
+    }
+    .cart-table tbody tr:hover {
+      width: 200%;
+      background-color: #f9f9f9;
+    }
+    .total-section {
+      width: 450px; 
+      padding: 20px;
+      background-color: #e9e7e7;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .checkout-btn:hover {
+      background-color: #0056b3;
+    }
+    .payment-success-banner {
+      background-color: #4CAF50; /* Green color */
+      color: white;
+      padding: 10px 20px; /* Increased padding for a bigger banner */
+      font-size: 1.2rem; /* Increased font size */
+      border-radius: 5px; /* Rounded corners */
+      margin-top: 10px; /* Optional margin for spacing */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div>
+      <div class="cart-section">
+        <h2>Hotels</h2>
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>Select</th>
+              <th>Package</th>
+              <th>Price</th>
+              <th>Room Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let hotel of data.hotel">
+                <td><input type="checkbox" [value]="hotel.packageid" (change)="onHotelSelect($event, hotel)"></td>
+                <td>{{ hotel.pname }}</td>
+                <td>{{ hotel.price }}</td>
+                <td>{{ hotel.rmType }}</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="cart-section">
+        <h2>Guides</h2>
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>Select</th>
+              <th>Package</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr *ngFor="let guide of data.guide">
+          <td><input type="checkbox" [value]="guide.packageid" (change)="onGuideSelect($event, guide)"></td>
+      
+          <td>{{ guide.dgname }}</td>
+          <td>{{ guide.price }}</td>
+          
+          <!-- Display more guide data here -->
+        </tr>
+      
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="cart-section">
+        <h2>Drivers</h2>
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>Select</th>
+              <th>Package</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let driver of data.driver">
+                <td><input type="checkbox" [value]="driver.packageid" (change)="onDriverSelect($event, driver)"></td>
+               
+                <td>{{ driver.dgname }}</td>
+                <td>{{ driver.price }}</td>
+                
+              </tr>
+      
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="total-section">
+      <h2>Checkout</h2>
+      <span>Total: ${{ totalPrice }}</span>
+      <div #paymentRef></div> 
+      <!-- <button  (click)="goToPayment()"
+       style="background-color: red;" class="checkout-btn">Checkout
+      </button> -->
+      <div *ngIf="paymentSuccess" class="payment-success-banner">
+        Payment Successful!
+      </div>
+    </div>
+  </div>
+</body>
+</html>

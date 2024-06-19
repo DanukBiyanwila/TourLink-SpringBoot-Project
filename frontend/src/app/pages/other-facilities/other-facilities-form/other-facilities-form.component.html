@@ -1,0 +1,66 @@
+<style>
+  .has-error .form-control {
+  border-color: rgb(176, 8, 8);
+}
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-user">
+          <div class="card-header">
+            <h5 class="card-title">Add Other Facilities</h5>
+          </div>
+          <div class="card-body">
+            <div class="col-md-8 offset-md-2">
+            <form (ngSubmit) = "onSubmit()" #otherFacilitiesForm="ngForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group" [class.has-error]="serviceType.invalid && (serviceType.dirty || serviceType.touched)">
+                    <label>Service Type <span class="text-danger">*</span></label> 
+                    <input type="text" class="form-control" id="serviceType" name="serviceType" 
+                    [(ngModel)] = "otherFacilities.serviceType" required #serviceType="ngModel">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div class="form-group" [class.has-error]="price.invalid && (price.dirty || price.touched)">
+                    <label for="exampleInputEmail1">Price <span class="text-danger">*</span></label> 
+                    <input type="email" class="form-control"  id="price" name="price" 
+                    [(ngModel)] = "otherFacilities.price" required #price="ngModel">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div class="form-group" [class.has-error]="serviceLocation.invalid && (serviceLocation.dirty || serviceLocation.touched)">
+                    <label>Service Location <span class="text-danger">*</span></label> 
+                    <input type="text" class="form-control"  id="serviceLocation" name="serviceLocation" 
+                    [(ngModel)] = "otherFacilities.serviceLocation" required #serviceLocation="ngModel">
+                  </div>
+                </div>
+                <div class="col-md-6 px-1">
+                  <div class="form-group">
+                    <label>Availability</label>
+                    <input type="number" class="form-control" id="availability" name="availability" 
+                    [(ngModel)] = "otherFacilities.availability">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control textarea" id="serviceDescription" name="serviceDescription" 
+                    [(ngModel)] = "otherFacilities.serviceDescription"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="update ml-auto mr-auto">
+                  <button type="submit" class="btn btn-primary btn-round" [disabled]="!otherFacilitiesForm.form.valid">save</button>
+                </div>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

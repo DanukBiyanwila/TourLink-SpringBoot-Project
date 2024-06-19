@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h4 class="card-title"> Hotels</h4>
+
+          <div>
+
+            <button *ngIf="getUserRole() !== 'ROLE_TOURIST'" (click)="hotelCreate()" class="btn btn-warning">Add</button>
+  
+            <!-- <button (click) = "hotelCreate()" class="btn btn-warning">Add</button> -->
+            <button (click)="downloadExcel()" class="btn"  style="background-color: rgb(162, 6, 6);">Download XLSX</button>
+          </div>
+        </div>
+        <div class="form-outline mb-2 col-md-6" data-mdb-input-init>
+          <input type="search" id="form1" [(ngModel)]="searchQuery" (ngModelChange)="applyFilter()"  class="form-control" placeholder="Search" aria-label="Search"/>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead class="">
+                <th>
+                  Name
+                </th>
+                <th>
+                  Country
+                </th>
+                <th>
+                  City
+                </th>
+                <th class="text-right">
+                  Actions
+                </th>
+              </thead>
+              <tbody>
+                <tr *ngFor = "let hotel of filteredHotels">
+
+                  <td>
+                    {{ hotel.name }}
+                  </td>
+                  <td>
+                    {{ hotel.country }}
+                  </td>
+                  <td>
+                    {{ hotel.city }}
+                  </td>
+                  <td class="text-right">
+                    <button *ngIf="getUserRole() !== 'ROLE_TOURIST'"(click) = "hotelDetails(hotel.id)" class="btn btn-info mr-2">Details</button>
+                    <button *ngIf="getUserRole() !== 'ROLE_TOURIST'"(click) = "hotelPackages(hotel.id)" class="btn btn-success mr-2">Packages</button>
+                    <button *ngIf="getUserRole() !== 'ROLE_TOURIST'"(click) = "hotelUpdate(hotel.id)" class="btn btn-warning mr-2">Update</button>
+                    <button *ngIf="getUserRole() !== 'ROLE_TOURIST'"(click) = "openDialog(hotel.id)" style="background-color: red;" class="btn">delete</button>
+
+                    <!-- <button *ngIf="getUserRole() !== 'ROLE_ADMIN'"(click) = "hotelPackages(hotel.id)" class="btn btn-success mr-2">look Packages</button> -->
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

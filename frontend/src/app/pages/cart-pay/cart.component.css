@@ -1,0 +1,40 @@
+/* CSS for page container */
+.page-container {
+    margin: 20px;
+  }
+  
+  /* CSS for table container */
+  .table-container {
+    overflow-x: auto; /* Add horizontal scroll for smaller screens */
+  }
+  
+  /* CSS for table */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  /* CSS for table header */
+  .table th {
+    background-color: #f2f2f2;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  /* CSS for table rows */
+  .table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* CSS for table rows on hover */
+  .table tbody tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  /* CSS for checkboxes */
+  .table input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  

@@ -1,0 +1,51 @@
+<div class="row" >
+    <div class="col-md-12">
+      <div class="card" >
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h4 class="card-title"> Driver Packages </h4>
+          <div>
+
+            <button  *ngIf="userRole === 'ROLE_DRIVER'" (click) = "createPackage()" class="btn btn-warning">Add</button>
+            <button (click)="downloadExcel()" class="btn"  style="background-color: rgb(162, 6, 6);">Download XLSX</button>
+          </div>
+        </div>
+        <div class="form-outline mb-2 col-md-6" data-mdb-input-init>
+          <input type="search" id="form1" [(ngModel)]="searchQuery" (ngModelChange)="applyFilter()"  class="form-control" placeholder="Search" aria-label="Search"/>
+        </div>
+  </div>
+  </div>
+  </div>
+  
+
+<div class="row" >
+    <div class="col-md-3" *ngFor = "let package of filteredDriverGuidePackage">
+      <div class="card guide-package">
+        <div class="card-header" style="height: 120px;">
+          <h4 class="card-title text-primary"> {{ package.name }} </h4>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <tr>
+              <td>Price</td>
+              <td>{{ package.price }}</td>
+            </tr>
+            <tr>
+              <td>Peoples</td>
+              <td>{{ package.noOfPeoples }}</td>
+            </tr>
+            <tr>
+              <td>Description</td>
+              <td>{{ package.description }}</td>
+            </tr>
+  
+          </table>
+        <td class="text-right">
+          <button *ngIf="userRole === 'ROLE_DRIVER'" (click) = "updateDriverPackage(package.id)" class="btn btn-warning mr-2">update</button>
+          <button *ngIf="userRole === 'ROLE_DRIVER'" (click) = "openDialog(package.id)" style="background-color: red;" class="btn">delete</button>
+        
+          <!-- <button *ngIf="getUserRole() !== 'ROLE_DRIVER'" (click)="addToCart(package.id)" style="background-color: red;" class="btn">add to cart</button> -->
+        </td>
+    </div>
+</div>
+</div>
+</div>

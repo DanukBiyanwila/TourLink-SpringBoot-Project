@@ -1,0 +1,359 @@
+<style>
+    .navbar-blue {
+    background-color: rgb(39, 39, 108, 0.9);
+}
+
+</style>
+<nav class="navbar navbar-expand-lg fixed-top navbar-blue">
+    <div class="container">
+        <a class="navbar-brand" >tour link</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#team">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li> -->
+                
+                <li class="nav-item"> 
+                    <button *ngIf="getUserRole() == 'ROLE_TOURIST'" (click)="goToCart()"
+                     style="background-color: rgb(245, 245, 245); color: black;" class="btn">My Cart
+                    </button>
+                </li>
+                <li class="nav-item"> 
+                    <button *ngIf="getUserRole() == 'ROLE_TOURIST' || getUserRole() == 'ROLE_DRIVER' || getUserRole() == 'ROLE_ADMIN' || getUserRole() == 'ROLE_GUIDE'" (click)="openDialog()"
+                     style="background-color: red;" class="btn">Log out
+                    </button>
+                </li>
+                <li class="nav-item"> 
+                    <button *ngIf="getUserRole() !== 'ROLE_TOURIST' && getUserRole() !== 'ROLE_ADMIN' && getUserRole() !== 'ROLE_DRIVER' && getUserRole() !== 'ROLE_GUIDE'" (click)="logout()"
+                     style="background-color: rgb(0, 166, 255);" class="btn">sign in
+                    </button>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="wrapper">
+    <div class="page-header page-header-small">
+        <div class="page-header-image rellax-header" data-rellax-speed="-8" style="background-image: url('assets/img/bg6.jpg');">
+        </div>
+        <div class="container">
+            <div class="content-center">
+                <h1 class="title">TOUR LINK</h1>
+                <div class="text-center">
+                  <a href="#pablo" class="btn btn-primary btn-icon btn-round">
+                    <i class="fab fa-facebook-square"></i>
+                  </a>
+                  <a href="#pablo" class="btn btn-primary btn-icon btn-round">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="#pablo" class="btn btn-primary btn-icon btn-round">
+                    <i class="fab fa-google-plus"></i>
+                  </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section section-about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+                    <h2 class="title">Who we are?</h2>
+                    <h5 class="description">Welcome to TOUR LINK! We're your go-to platform for seamless travel experiences. Whether you're looking for hotels, drivers, or guides, we've got you covered. Our mission is simple: to connect you with the best hospitality services tailored to your destination. Let's make your travel dreams a reality!</h5>
+                </div>
+            </div>
+            <div class="separator separator-primary"></div>
+            <div class="section-story-overview">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="image-container image-left" style="background-image: url('assets/img/login.jpg')">
+                            <!-- First image on the left side -->
+                            <!-- <p class="blockquote blockquote-primary">"Over the span of the satellite record, Arctic sea ice has been declining significantly, while sea ice in the Antarctichas increased very slightly"
+                                <br>
+                                <br>
+                                <small>-NOAA</small>
+                            </p> -->
+                        </div>
+                        <!-- Second image on the left side of the article -->
+                        <!-- <div class="image-container" style="background-image: url('assets/img/bg3.jpg')"></div> -->
+                    </div>
+                    <div class="col-md-5">
+                        <!-- First image on the right side, above the article -->
+                        <div class="image-container image-right" style="background-image: url('assets/img/bg1.jpg')"></div>
+                        <!-- <h3>So what does the new record for the lowest level of winter ice actually mean</h3>
+                        <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens with climate change. Even if the Arctic continues to be one of the fastest-warming regions of the world, it will always be plunged into bitterly cold polar dark every winter. And year-by-year, for all kinds of natural reasons, there’s huge variety of the state of the ice.
+                        </p>
+                        <p>
+                            For a start, it does not automatically follow that a record amount of ice will melt this summer. More important for determining the size of the annual thaw is the state of the weather as the midnight sun approaches and temperatures rise. But over the more than 30 years of satellite records, scientists have observed a clear pattern of decline, decade-by-decade.
+                        </p>
+                        <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens with climate change. Even if the Arctic continues to be one of the fastest-warming regions of the world, it will always be plunged into bitterly cold polar dark every winter. And year-by-year, for all kinds of natural reasons, there’s huge variety of the state of the ice.
+                        </p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section section-hotels">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="title">Hotels</h2>
+                <a class="h3" (click) = "moreHotels()">more...</a> 
+            </div>
+            <div class="row" >
+                <div class="col-md-4" *ngFor = "let hotel of hotels">
+                    <div class="">
+                        <div class="card-header img-fluid img-raised" style="background-image: url('assets/img/bg3.jpg');"></div>
+                        <h4 class="title mb-0">{{ hotel.name }}</h4>
+                        <div class="star-rating">
+                            <span class="star" *ngFor="let star of [1, 2, 3, 4, 5]" [ngClass]="{'highlighted': star <= hotel.averageRating}">&#9733;</span>
+                        </div>
+                        <a class="h5" (click) = "hotelPackages(hotel.id)">Packages</a> 
+                        <p class="category text-primary"></p>
+                        <button *ngIf="getUserRole() == 'ROLE_TOURIST'" (click)="openPopup(hotel.id, 'hotel')" class="btn" style="background-color: goldenrod;">Rate</button>
+                        <p class="category text-primary"></p>
+                        
+                        <!-- <p class="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                            <a href="#">links</a> for people to be able to follow them outside the site.</p> -->
+                            <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-twitter"></i></a>
+                            <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-instagram"></i></a>
+                            <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-facebook-square"></i></a>
+                    </div>
+                </div>
+            <!-- <div class="col-md-4">
+                <div class="card hotel-package">
+                    <div class="card-header" style="background-image: url('assets/img/avatar.jpg');">
+                        <h4 class="card-title"> name </h4>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <p class="h5">Room</p>
+                            <p class="h5">package </p>
+                            <p class="h5">Rs. price /=</p>
+                        </div>
+                        <div class="text-right">
+                            <button style="background-color: red;" class="btn">add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card hotel-package">
+                    <div class="card-header" style="background-image: url('assets/img/bg3.jpg');">
+                        <h4 class="card-title"> name </h4>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <p class="h5">Room</p>
+                            <p class="h5">package </p>
+                            <p class="h5">Rs. price /=</p>
+                        </div>
+                        <div class="text-right">
+                            <button style="background-color: red;" class="btn">add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            
+            
+            </div>
+            
+        </div>
+    </div>
+    <div class="section section-team ">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="title">Guides</h2>
+                <a class="h3" (click) = "more('guide')">more...</a> 
+            </div>
+            <div class="team">
+                <div class="row text-center">
+                    <div class="col-md-4" *ngFor = "let user of guides">
+                        <div class="team-player">
+                            <img src="assets/img/ryan.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
+                            <h4 class="title mb-0">{{ user.firstName }} {{ user.lastName }}</h4>
+                            <div class="star-rating">
+                                <span class="star" *ngFor="let star of [1, 2, 3, 4, 5]" [ngClass]="{'highlighted': star <= user.averageRating}">&#9733;</span>
+                            </div>
+                            <a class="h5" (click) = "dgPackage(user.id,'guide')">Packages</a> 
+                            <p class="category text-primary"></p>
+                            <button *ngIf="getUserRole() == 'ROLE_TOURIST'" (click)="openPopup(user.id, 'user')" class="btn" style="background-color: goldenrod;">Rate</button>
+                            <p class="category text-primary"></p>
+                            <!-- <p class="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                                <a href="#">links</a> for people to be able to follow them outside the site.</p> -->
+                                <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-twitter"></i></a>
+                                <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-instagram"></i></a>
+                                <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-facebook-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section section-team ">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="title">Drivers</h2>
+                <a class="h3" (click) = "more('driver')">more...</a> 
+            </div>
+            <div class="team">
+                <div class="row text-center">
+                    <div class="col-md-4" *ngFor = "let user of drivers">
+                        <div class="team-player">
+                            <img src="assets/img/ryan.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
+                            <h4 class="title mb-0">{{ user.firstName }} {{ user.lastName }}</h4>
+                            <div class="star-rating">
+                                <span class="star" *ngFor="let star of [1, 2, 3, 4, 5]" [ngClass]="{'highlighted': star <= user.averageRating}">&#9733;</span>
+                            </div>
+                            <a class="h5" (click) = "dgPackage(user.id,'driver')">Packages</a> 
+                            <p class="category text-primary"></p>
+                            <button *ngIf="getUserRole() == 'ROLE_TOURIST'" (click)="openPopup(user.id, 'user')" class="btn" style="background-color: goldenrod;">Rate</button>
+                            <p class="category text-primary"></p>
+                            <!-- <p class="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                                <a href="#">links</a> for people to be able to follow them outside the site.</p> -->
+                                <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-twitter"></i></a>
+                                <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-instagram"></i></a>
+                                <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-facebook-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="section section-team text-center">
+        <div class="container">
+            <h2 class="title">Here is our team</h2>
+            <div class="team">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="team-player">
+                            <img src="assets/img/avatar.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
+                            <h4 class="title">Romina Hadid</h4>
+                            <p class="category text-primary">Model</p>
+                            <p class="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                                <a href="#">links</a> for people to be able to follow them outside the site.</p>
+                                <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-twitter"></i></a>
+                                <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-instagram"></i></a>
+                                <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-facebook-square"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="team-player">
+                            <img src="assets/img/ryan.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
+                            <h4 class="title">Ryan Tompson</h4>
+                            <p class="category text-primary">Designer</p>
+                            <p class="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                                <a href="#">links</a> for people to be able to follow them outside the site.</p>
+                                <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-twitter"></i></a>
+                                <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="team-player">
+                            <img src="assets/img/eva.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
+                            <h4 class="title">Eva Jenner</h4>
+                            <p class="category text-primary">Fashion</p>
+                            <p class="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
+                                <a href="#">links</a> for people to be able to follow them outside the site.</p>
+                                <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-google-plus"></i></a>
+                                <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-youtube"></i></a>
+                                <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- <div class="section section-contact-us text-center">
+        <div class="container">
+            <h2 class="title">Want to work with us?</h2>
+            <p class="description">Your project is very important to us.</p>
+            <div class="row">
+                <div class="col-lg-6 text-center col-md-8 ml-auto mr-auto">
+                  <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus===true}">
+                    <div class="input-group-prepend" >
+                      <span class="input-group-text">
+                          <i class="now-ui-icons users_circle-08"></i>
+                      </span>
+                    </div>
+                      <input type="text" class="form-control" placeholder="Left Font Awesome Icon" (focus)="focus=true" (blur)="focus=false">
+                  </div>
+                  <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus1===true}">
+                    <div class="input-group-prepend" >
+                      <span class="input-group-text">
+                            <i class="now-ui-icons ui-1_email-85"></i>
+                      </span>
+                    </div>
+                      <input type="text" class="form-control" placeholder="Left Font Awesome Icon" (focus)="focus1=true" (blur)="focus1=false">
+                  </div>
+                    <div class="textarea-container">
+                        <textarea class="form-control" name="name" rows="4" cols="80" placeholder="Type a message..."></textarea>
+                    </div>
+                    <div class="send-button">
+                        <a href="#pablo" class="btn btn-primary btn-round btn-block btn-lg">Send Message</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <feedback-form-cmp *ngIf="showPopup" [id]="idToSend" [ty]="rateType" (closeModal)="showPopup = false"></feedback-form-cmp>
+    <footer class="footer footer-default">
+        <!-- <div class="container">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="https://www.creative-tim.com">
+                            Creative Tim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.creative-tim.com/about-us">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://blog.creative-tim.com">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md">
+                            MIT License
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright">
+                &copy;
+                {{data | date: 'yyyy'}}, Designed by
+                <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
+                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </div>
+        </div> -->
+    </footer>
+</div>
+
+<script>
+    $(document).ready(function() {
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 50) {
+            $('.navbar').addClass('navbar-opaque');
+        } else {
+            $('.navbar').removeClass('navbar-opaque');
+        }
+    });
+});
+
+</script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

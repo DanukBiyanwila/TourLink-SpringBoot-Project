@@ -1,0 +1,13 @@
+.star-rating .star {
+    font-size: 30px;
+  color: #ccc;
+}
+
+.star-rating .star.highlighted {
+  color: #ffcc00;
+}
+
+.row .card {
+  height: 300px;
+  overflow-y: auto;
+}

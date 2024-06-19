@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h4 class="card-title"> Drivers</h4>
+          <!-- <button (click) = "hotelCreate()" class="btn btn-warning">Add</button> -->
+          <button (click)="downloadExcel()" class="btn"  style="background-color: rgb(162, 6, 6);">Download XLSX</button>
+        </div>
+        <div class="form-outline mb-2 col-md-6" data-mdb-input-init>
+          <input type="search" id="form1" [(ngModel)]="searchQuery" (ngModelChange)="applyFilter()"  class="form-control" placeholder="Search" aria-label="Search"/>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead class="">
+                <th>
+                  Name
+                </th>
+                <th>
+                  Email
+                </th>
+                <th>
+                  City
+                </th>
+                <th class="text-right">
+                  Actions
+                </th>
+              </thead>
+              <tbody>
+                <tr *ngFor = " let user of filteredUsers">
+
+                  <td>
+                    {{ user.firstName }}
+                  </td>
+                  <td>
+                    {{ user.email }}
+                  </td>
+                  <td>
+                    {{ user.country }}
+                  </td>
+                  <td class="text-right">
+                    <button *ngIf="getUserRole() !== 'ROLE_TOURIST'" (click) = "driverDetails(user.id)" class="btn btn-info mr-2">Details</button>
+                    <button  (click) = "driverPackages(user.id)" class="btn btn-success">Packages</button>
+
+                    
+                  </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
